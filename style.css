@@ -1,0 +1,222 @@
+:root {
+    --gameboy-dark: #0f380f;
+    --gameboy-light: #306230;
+    --gameboy-lighter: #8bac0f;
+    --gameboy-lightest: #9bbc0f;
+    --modern-bg: #f5f5f5;
+    --modern-primary: #4a86e8;
+    --modern-secondary: #a4c2f4;
+    --modern-text: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--gameboy-dark);
+    color: var(--gameboy-lightest);
+    padding: 20px;
+}
+
+body.light-mode {
+    background-color: var(--modern-bg);
+    color: var(--modern-text);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 32px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--gameboy-light);
+    width: 100%;
+    text-align: center;
+}
+
+.light-mode .titulo {
+    text-shadow: 2px 2px 0px var(--modern-secondary);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--gameboy-lightest);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: var(--gameboy-light);
+    box-shadow: inset -2px -2px 0px var(--gameboy-dark),
+        inset 2px 2px 0px var(--gameboy-lighter);
+}
+
+.light-mode .theme-toggle {
+    color: var(--modern-text);
+    background-color: var(--modern-secondary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.nav-button {
+    background-color: var(--gameboy-light);
+    border: none;
+    font-size: 24px;
+    padding: 15px 20px;
+    cursor: pointer;
+    margin: 0 15px;
+    color: var(--gameboy-lightest);
+    border-radius: 0;
+    box-shadow: inset -4px -4px 0px var(--gameboy-dark),
+        inset 4px 4px 0px var(--gameboy-lighter);
+    transition: transform 0.1s, box-shadow 0.1s;
+    font-family: 'Press Start 2P', monospace;
+}
+
+.nav-button:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.nav-button:active:not(:disabled) {
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 0px var(--gameboy-dark),
+        inset -2px -2px 0px var(--gameboy-lighter);
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.light-mode .nav-button {
+    background-color: var(--modern-primary);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.light-mode .nav-button:active:not(:disabled) {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.pokemon-card {
+    background-color: var(--gameboy-light);
+    border: 4px solid var(--gameboy-lighter);
+    box-shadow: 0 0 0 4px var(--gameboy-dark);
+    padding: 20px;
+    text-align: center;
+    width: 280px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.light-mode .pokemon-card {
+    background-color: white;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+.pokemon-name {
+    margin-bottom: 15px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.pokemon-image-container {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gameboy-lightest);
+    border: 4px solid var(--gameboy-lighter);
+    margin: 10px 0;
+}
+
+.light-mode .pokemon-image-container {
+    background-color: var(--modern-secondary);
+    border-radius: 50%;
+    border: none;
+}
+
+.pokemon-image {
+    width: 150px;
+    height: 150px;
+    image-rendering: pixelated;
+}
+
+.pokemon-stats {
+    margin-top: 15px;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.loading-spinner {
+    border: 4px solid var(--gameboy-lightest);
+    border-top: 4px solid var(--gameboy-dark);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+.light-mode .loading-spinner {
+    border: 4px solid var(--modern-secondary);
+    border-top: 4px solid var(--modern-primary);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

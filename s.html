@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeDex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <!--//* flechas: -->
+        <h1 class="titulo">PokeDex</h1>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+    <div class="navigation">
+        <button id="prevBtn" class="nav-button" disabled>&#9664;</button>
+        <div id="pokemonContainer" class="pokemon-container"></div>
+        <button id="nextBtn" class="nav-button">&#9654;</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
