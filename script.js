@@ -1,5 +1,28 @@
-//!  Fetch y  loguica para mostrar poquemones
+//! Modo oscuro y brillante:
+//TODO: Gestión de temas
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
 
+//TODO: Cargar preferencia de tema guardada
+const savedTheme = localStorage.getItem('pokedexTheme');
+if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+
+    if (body.classList.contains('light-mode')) {
+        localStorage.setItem('pokedexTheme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+        localStorage.setItem('pokedexTheme', 'gameboy');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+});
+
+//! Fetch y  loguica para mostrar poquemones
 //TODO: Gestión de datos Pokémon
 let currentPokemonId = 1;
 const prevBtn = document.getElementById('prevBtn');
